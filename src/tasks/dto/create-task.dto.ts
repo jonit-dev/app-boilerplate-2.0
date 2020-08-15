@@ -3,8 +3,6 @@ import { TaskStatus } from '../task.model';
 export class CreateClassDto {
   title: string;
   description: string;
+  status: TaskStatus;
 }
 
-export class UpdateClassDto extends CreateClassDto {
-  status: TaskStatus
-}
