@@ -1,5 +1,5 @@
-import { CreateClassDto } from './create-task.dto';
+import { CreateTaskDto } from './create-task.dto';
 
-export class UpdateClassDto extends CreateClassDto {
+export class UpdateClassDto extends CreateTaskDto {
 
 }
