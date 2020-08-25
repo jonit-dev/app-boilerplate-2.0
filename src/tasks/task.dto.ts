@@ -9,8 +9,7 @@ export class TaskCreateDTO {
   @IsNotEmpty()
   description: string;
 
-  @IsNotEmpty()
-  status: TaskStatus;
+
 }
 
 
@@ -26,6 +25,7 @@ export class TaskGetFilterDTO {
   search: string;
 }
 
-export class UpdateClassDto extends TaskCreateDTO {
-
+export class TaskUpdateDTO extends TaskCreateDTO {
+  @IsOptional()
+  status: TaskStatus
 }

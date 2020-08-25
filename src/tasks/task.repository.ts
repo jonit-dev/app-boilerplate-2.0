@@ -1,7 +1,6 @@
-import { NotFoundException } from '@nestjs/common';
-import { EntityRepository, Like, Repository } from 'typeorm';
+import { EntityRepository, Repository } from 'typeorm';
 
-import { TaskCreateDTO, TaskGetFilterDTO } from './task.dto';
+import { TaskCreateDTO, TaskGetFilterDTO, TaskUpdateDTO } from './task.dto';
 import { Task } from './task.entity';
 import { TaskStatus } from './task.types';
 
@@ -25,45 +24,28 @@ export class TaskRepository extends Repository<Task> {
 
     const { status, search } = filterDto
 
-    let query = {}
-
+    const query = this.createQueryBuilder('task')
 
     if (status) {
-      query = {
-        ...query,
-        ...{
-          status: filterDto.status
-        }
-      }
+      query.andWhere('task.status = :status', { status })
     }
+
     if (search) {
-      query = {
-        ...query,
-        ...{
-          title: Like(`%${search}%`)
-        }
-      }
+      query.andWhere('(task.title ILIKE :search OR task.description ILIKE :search)', { search: `%${search}%` })
     }
 
-    console.log(query);
 
-    const tasks = await Task.find(query)
+
+    const tasks = await query.getMany()
 
     return tasks
   }
 
   async deleteTask(id: number) {
+    return await Task.delete({ id })
+  }
 
-    const deleteTask = await Task.delete({ id })
-
-    if (!deleteTask) {
-      throw new NotFoundException(`Task ID ${id} not found!`)
-    }
-
-    return {
-      status: "success",
-      message: `Task ID ${id} deleted successfully!`
-    };
-
+  async updateTask(id: number, taskUpdateDto: TaskUpdateDTO) {
+    return await Task.update({ id }, taskUpdateDto)
   }
 }
