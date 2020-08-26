@@ -1,7 +1,11 @@
 
 export const config = () => ({
-  security: {
-    jwtSecret: process.env.JWT_SECRET
+
+  authentication: {
+    jwtSecret: process.env.JWT_SECRET,
+    passport: {
+      defaultStrategy: process.env.PASSPORT_DEFAULT_STRATEGY
+    }
   },
   database: {
     type: process.env.DATABASE_TYPE,
