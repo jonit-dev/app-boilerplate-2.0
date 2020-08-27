@@ -9,7 +9,7 @@ export class DatabaseConfig implements TypeOrmOptionsFactory {
 
   constructor(private configService: ConfigService) { }
 
-  createTypeOrmOptions() {
+  createTypeOrmOptions(): any {
     return this.configService.get('database')
   }
 

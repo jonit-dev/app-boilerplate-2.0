@@ -29,7 +29,7 @@ export class AuthService {
     }
 
     const payload: IJwtPayload = { username }
-    const accessToken = await this.jwtService.sign(payload)
+    const accessToken = await this.jwtService.signAsync(payload)
 
     return { accessToken }
 
