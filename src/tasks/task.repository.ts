@@ -12,8 +12,8 @@ export class TaskRepository extends Repository<Task> {
     const { title, description } = createTaskDto
 
     const task = new Task()
-    task.title = title,
-      task.description = description;
+    task.title = title;
+    task.description = description;
     task.status = TaskStatus.Open;
     await task.save()
 

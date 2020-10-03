@@ -28,6 +28,8 @@ services:
 
   boilerplate-admin:
     container_name: 'boilerplate-admin'
+    depends_on:
+      - boilerplate-database
     image: adminer
     restart: always
     ports:

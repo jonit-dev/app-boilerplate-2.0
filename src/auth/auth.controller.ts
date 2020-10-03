@@ -13,8 +13,6 @@ export class AuthController {
 
   @Post('/signup')
   signUp(@Body(ValidationPipe) authCredentialsDTO: AuthCredentialsDTO): Promise<void> {
-    console.log(authCredentialsDTO);
-
     return this.authService.signUp(authCredentialsDTO)
   }
 
