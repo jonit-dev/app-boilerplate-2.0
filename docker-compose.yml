@@ -1,11 +1,23 @@
 version: '3'
 
 services:
+  boilerplate-api:
+    container_name: 'boilerplate-api'
+    depends_on:
+      - boilerplate-database
+    restart: always
+    build: .
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+
   boilerplate-database:
+    container_name: 'boilerplate-database'
     image: postgres:alpine
     ports:
       - ${DATABASE_PORT}:${DATABASE_PORT}
-    container_name: 'dp-database'
     restart: always
     volumes:
       - pg-data:/var/lib/postgresql/data
@@ -15,7 +27,7 @@ services:
       POSTGRES_DB: ${DATABASE_NAME}
 
   boilerplate-admin:
-    container_name: dp-admin
+    container_name: 'boilerplate-admin'
     image: adminer
     restart: always
     ports:

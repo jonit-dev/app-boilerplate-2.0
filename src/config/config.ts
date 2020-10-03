@@ -14,6 +14,6 @@ export const config = (): any => ({
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_NAME,
     entities: [__dirname + '/../**/*.entity.{js,ts}'],
-    synchronize: true // Dont set to true on production
+    synchronize: process.env.ENV === "Development" ? true : false // Dont set to true on production
   }
 })
