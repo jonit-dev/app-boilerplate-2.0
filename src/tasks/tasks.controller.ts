@@ -1,5 +1,6 @@
-import { Body, Controller, Param, ParseIntPipe, Query, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Param, ParseIntPipe, Query, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { Delete, Get, Patch, Post } from '@nestjs/common/decorators/http/request-mapping.decorator';
+import { AuthGuard } from '@nestjs/passport';
 
 import { TaskStatusValidationPipe } from './pipes/taskStatusValidation.pipe';
 import { TaskCreateDTO, TaskGetFilterDTO, TaskUpdateDTO } from './task.dto';
@@ -8,6 +9,7 @@ import { TasksService } from './tasks.service';
 
 
 @Controller('tasks')
+@UseGuards(AuthGuard())
 export class TasksController {
 
   constructor(private tasksService: TasksService) { }
@@ -17,17 +19,6 @@ export class TasksController {
   getTasks(@Query(ValidationPipe) filterDto?: TaskGetFilterDTO): Promise<Task[]> {
     return this.tasksService.getTasks(filterDto)
   }
-
-  // @Get()
-  // getTasks(@Query(ValidationPipe) filterDto: GetTasksFilterDto): ITask[] {
-
-  //   if (!Object.keys(filterDto).length) {
-  //     return this.tasksService.getAllTasks()
-  //   }
-
-  //   return this.tasksService.getTasksWithFilters(filterDto)
-
-  // }
 
   @Get('/:id')
   getTaskById(@Param('id', ParseIntPipe) id: number): Promise<Task> {
