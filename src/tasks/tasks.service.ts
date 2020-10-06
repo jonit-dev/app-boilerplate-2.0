@@ -47,7 +47,6 @@ export class TasksService {
   async updateTask(id: number, taskUpdateDto: TaskUpdateDTO): Promise<void> {
     const result = await this.taskRepository.updateTask(id, taskUpdateDto)
 
-    console.log(result);
 
     if (!result.affected) {
       throw new NotFoundException(`Task with Id ${id} not found`)

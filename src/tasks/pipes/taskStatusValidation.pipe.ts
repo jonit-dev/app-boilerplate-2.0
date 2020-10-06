@@ -14,8 +14,6 @@ export class TaskStatusValidationPipe implements PipeTransform {
 
   transform(value, metadata: ArgumentMetadata) {
 
-    console.log('value', value);
-    console.log('metadata', metadata);
 
     // Check if the task status is under our enum
     if (value.status && !this.isStatusValid(value.status)) {
@@ -26,7 +24,7 @@ export class TaskStatusValidationPipe implements PipeTransform {
   }
 
   private isStatusValid(status) {
-    console.log(status);
+
     return this.allowedStatuses.includes(status)
   }
 }

@@ -24,7 +24,6 @@ export class UserRepository extends Repository<User> {
       await user.save();
     }
     catch (error) {
-      console.log(error.code);
       if (error.code === "23505") {
         console.log('USER ALREADY EXISTS!');
         throw new ConflictException('This user already exists!')
