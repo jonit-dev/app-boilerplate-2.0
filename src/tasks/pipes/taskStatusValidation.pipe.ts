@@ -1,4 +1,4 @@
-import { ArgumentMetadata, BadRequestException, PipeTransform } from '@nestjs/common';
+import { BadRequestException, PipeTransform } from '@nestjs/common';
 
 import { TaskStatus } from '../task.types';
 
@@ -12,7 +12,7 @@ export class TaskStatusValidationPipe implements PipeTransform {
     TaskStatus.Done
   ]
 
-  transform(value, metadata: ArgumentMetadata) {
+  transform(value) {
 
 
     // Check if the task status is under our enum
