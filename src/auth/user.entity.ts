@@ -1,14 +1,14 @@
 import * as bcrypt from 'bcrypt';
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
-@Unique(['userName'])
+@Unique(['email'])
 @Entity()
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  userName: string;
+  email: string;
 
   @Column()
   password: string;
