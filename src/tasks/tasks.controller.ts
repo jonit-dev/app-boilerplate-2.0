@@ -1,6 +1,7 @@
 import { Body, Controller, Param, ParseIntPipe, Query, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { Delete, Get, Patch, Post } from '@nestjs/common/decorators/http/request-mapping.decorator';
 import { AuthGuard } from '@nestjs/passport';
+import { RestrictUpdateKeys } from 'src/pipes/RestrictUpdateKeys.pipe';
 
 import { TaskStatusValidationPipe } from './pipes/taskStatusValidation.pipe';
 import { TaskCreateDTO, TaskGetFilterDTO, TaskUpdateDTO } from './task.dto';
@@ -44,7 +45,7 @@ export class TasksController {
   @Patch('/:id')
   updateTask(
     @Param('id', ParseIntPipe) id: number,
-    @Body(TaskStatusValidationPipe) updateClassDto: TaskUpdateDTO
+    @Body(RestrictUpdateKeys, TaskStatusValidationPipe) updateClassDto: TaskUpdateDTO
   ): Promise<void> {
     return this.tasksService.updateTask(id, updateClassDto)
   }
