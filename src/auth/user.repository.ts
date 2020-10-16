@@ -2,6 +2,7 @@ import { ConflictException, InternalServerErrorException } from '@nestjs/common'
 import * as bcrypt from 'bcrypt';
 import { EntityRepository, Repository } from 'typeorm';
 
+import { ErrorCodes } from '../types/errorCodes.types';
 import { AuthCredentialsDTO } from './auth.dto';
 import { User } from './user.entity';
 
@@ -24,7 +25,7 @@ export class UserRepository extends Repository<User> {
       await user.save();
     }
     catch (error) {
-      if (error.code === "23505") {
+      if (error.code === ErrorCodes.DuplicateEntry) {
         console.log('USER ALREADY EXISTS!');
         throw new ConflictException('This user already exists!')
       } else {

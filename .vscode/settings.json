@@ -1,4 +1,5 @@
 {
   "workbench.colorTheme": "Red One Dark Pro | Mirage",
-  "editor.minimap.size": "fit"
+  "editor.minimap.size": "fit",
+  "typescript.preferences.importModuleSpecifier": "relative"
 }
