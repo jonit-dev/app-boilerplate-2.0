@@ -9,6 +9,10 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 RUN npm install
+
+# Fix spawn ps ENOENT error on container reload: https://github.com/nestjs/nest-cli/issues/484
+RUN apt-get update && apt-get install -y procps
+
 # If you are building your code for production
 # RUN npm ci --only=production
 

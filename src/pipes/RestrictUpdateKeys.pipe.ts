@@ -5,7 +5,7 @@ import { validate } from 'class-validator';
 
 export class RestrictUpdateKeys implements PipeTransform {
 
-  async transform(value: any, { metatype }: ArgumentMetadata) {
+  async transform(value: any, { metatype }: ArgumentMetadata): Promise<any> {
 
     // You have to convert to class first, otherwise validate won't work!
     const object = plainToClass(metatype, value);
