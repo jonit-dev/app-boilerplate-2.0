@@ -23,6 +23,20 @@ export class AuthController {
     return this.authService.signIn(authCredentialsDTO)
   }
 
+  // protected route sample
+  // @Post('/test')
+  // @UseGuards(AuthGuard())
+  // // test(@Req() req): { status: string, payload: any } {
+  // test(@GetUser() user: User): { status: string, payload: any } {
+
+  //   console.log(user);
+
+  //   return {
+  //     status: "protected route!",
+  //     payload: user
+  //   }
+  // }
+
 
 
 }
