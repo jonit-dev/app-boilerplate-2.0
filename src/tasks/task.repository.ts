@@ -1,6 +1,6 @@
 import { DeleteResult, EntityRepository, Repository, UpdateResult } from 'typeorm';
 
-import { User } from '../auth/user.entity';
+import { User } from '../users/user.entity';
 import { TaskCreateDTO, TaskGetFilterDTO, TaskUpdateDTO } from './task.dto';
 import { Task } from './task.entity';
 import { TaskStatus } from './task.types';

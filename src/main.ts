@@ -10,6 +10,7 @@ import { AppModule } from './app.module';
 async function bootstrap(): Promise<void> {
 
 
+  // Fastify x NestJS: https://docs.nestjs.com/techniques/performance
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
 
   const logger = new CustomLogger('bootstrap')

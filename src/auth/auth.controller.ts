@@ -1,4 +1,4 @@
-import { Body, Controller, Post, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Param, Post, ValidationPipe } from '@nestjs/common';
 
 import { AuthCredentialsDTO } from './auth.dto';
 import { AuthService } from './auth.service';
@@ -21,6 +21,14 @@ export class AuthController {
   signIn(@Body(ValidationPipe) authCredentialsDTO: AuthCredentialsDTO): Promise<IAuthGranted> {
 
     return this.authService.signIn(authCredentialsDTO)
+  }
+
+  @Post("/test/:id")
+  test(@Param() params): any {
+
+    const { id } = params;
+
+    return { message: "This is a test route!", params }
   }
 
   // protected route sample

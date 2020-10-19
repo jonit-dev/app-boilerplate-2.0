@@ -5,7 +5,7 @@ import { RestrictUpdateKeys } from 'pipes/RestrictUpdateKeys.pipe';
 
 import { ColorTemplate, CustomLogger } from '../../loggers/CustomLogger';
 import { GetUser } from '../auth/auth.decorators';
-import { User } from '../auth/user.entity';
+import { User } from '../users/user.entity';
 import { TaskStatusValidationPipe } from './pipes/taskStatusValidation.pipe';
 import { TaskCreateDTO, TaskGetFilterDTO, TaskUpdateDTO } from './task.dto';
 import { Task } from './task.entity';

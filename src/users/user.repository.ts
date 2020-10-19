@@ -2,13 +2,16 @@ import { ConflictException, InternalServerErrorException } from '@nestjs/common'
 import * as bcrypt from 'bcrypt';
 import { EntityRepository, Repository } from 'typeorm';
 
+import { CustomLogger } from '../../loggers/CustomLogger';
 import { ErrorCodes } from '../../types/errorCodes.types';
-import { AuthCredentialsDTO } from './auth.dto';
+import { AuthCredentialsDTO } from '../auth/auth.dto';
 import { User } from './user.entity';
 
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
+
+  private logger = new CustomLogger("UserRepository")
 
   async signUp(authCredentialsDTO: AuthCredentialsDTO): Promise<void> {
 
@@ -26,7 +29,7 @@ export class UserRepository extends Repository<User> {
     }
     catch (error) {
       if (error.code === ErrorCodes.DuplicateEntry) {
-        console.log('USER ALREADY EXISTS!');
+        this.logger.error(`Trying to create user ${email}, but it already exists!`, error);
         throw new ConflictException('This user already exists!')
       } else {
         throw new InternalServerErrorException();
