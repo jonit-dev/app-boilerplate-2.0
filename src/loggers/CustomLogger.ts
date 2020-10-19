@@ -44,10 +44,17 @@ export class CustomLogger extends Logger {
 
   public customLog(message: string, colorTemplate?: ColorTemplate): void {
 
+    // If no color is provided, just return a simple plain message, without coloring.
+    if (colorTemplate === undefined) {
+      super.log(message)
+      return
+    }
 
     const { background, foreground } = this.colorTemplate[String(colorTemplate) || ColorTemplate.Blue]
 
     super.log(ConsoleHelper.coloredLog(background, foreground, `🤖: ${message}`, true));
+
+
   }
 
   public log(message: string): void {

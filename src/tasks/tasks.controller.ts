@@ -5,6 +5,7 @@ import { RestrictUpdateKeys } from 'src/pipes/RestrictUpdateKeys.pipe';
 
 import { GetUser } from '../auth/auth.decorators';
 import { User } from '../auth/user.entity';
+import { ColorTemplate, CustomLogger } from '../loggers/CustomLogger';
 import { TaskStatusValidationPipe } from './pipes/taskStatusValidation.pipe';
 import { TaskCreateDTO, TaskGetFilterDTO, TaskUpdateDTO } from './task.dto';
 import { Task } from './task.entity';
@@ -15,6 +16,8 @@ import { TasksService } from './tasks.service';
 @UseGuards(AuthGuard())
 export class TasksController {
 
+  private logger = new CustomLogger('Tasks')
+
   constructor(private tasksService: TasksService) { }
 
 
@@ -23,6 +26,7 @@ export class TasksController {
     @GetUser() user: User,
     @Query(ValidationPipe) filterDto?: TaskGetFilterDTO,
   ): Promise<Task[]> {
+    this.logger.customLog(`User: ${user.email} getting all tasks. filterDto: ${JSON.stringify(filterDto)}`)
     return this.tasksService.getTasks(user, filterDto)
   }
 
@@ -39,6 +43,7 @@ export class TasksController {
 
   createTask(@Body() createTaskDto: TaskCreateDTO,
     @GetUser() user: User): Promise<Task> {
+    this.logger.customLog(`User: ${user.email} is creating a new task. CreateTaskDto: ${JSON.stringify(createTaskDto)}`, ColorTemplate.Blue)
     return this.tasksService.createTask(createTaskDto, user)
   }
 
@@ -47,6 +52,7 @@ export class TasksController {
     @Param('id', ParseIntPipe) id: number,
     @GetUser() user: User,
   ): Promise<void> {
+    this.logger.customLog(`User: ${user.email} is deleting a task. Id: ${id}`)
     return this.tasksService.deleteTask(id, user)
   }
 
@@ -58,9 +64,10 @@ export class TasksController {
   @Patch('/:id')
   updateTask(
     @Param('id', ParseIntPipe) id: number,
-    @Body(RestrictUpdateKeys, TaskStatusValidationPipe) updateClassDto: TaskUpdateDTO,
+    @Body(RestrictUpdateKeys, TaskStatusValidationPipe) updateTaskDto: TaskUpdateDTO,
     @GetUser() user: User,
   ): Promise<void> {
-    return this.tasksService.updateTask(id, updateClassDto, user)
+    this.logger.customLog(`User: ${user.email} is updating a task. updateTaskDto: ${JSON.stringify(updateTaskDto)}`)
+    return this.tasksService.updateTask(id, updateTaskDto, user)
   }
 }
