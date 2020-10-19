@@ -27,8 +27,5 @@ async function bootstrap(): Promise<void> {
   logger.customLog(`Server is running on ${env} | Port: ${port} | Language: ${language} | Timezone: ${timezone} | Admin: ${adminEmail}`, env === "Development" ? ColorTemplate.Yellow : ColorTemplate.Red)
 
 
-
-
-
 }
 bootstrap();

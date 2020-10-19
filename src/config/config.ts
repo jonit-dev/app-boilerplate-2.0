@@ -1,5 +1,5 @@
-
-export const config = (): any => ({
+export const appConfig = (): any => ({
+  environment: process.env.ENV,
   authentication: {
     jwtSecret: process.env.JWT_SECRET,
     passport: {

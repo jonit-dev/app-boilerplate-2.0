@@ -2,6 +2,7 @@ import { Logger } from '@nestjs/common';
 
 import { ConsoleHelper } from '../libs/ConsoleHelper';
 import { ConsoleColor } from '../types/console.types';
+import { EnvTypes } from '../types/env.types';
 
 
 export enum ColorTemplate {
@@ -42,7 +43,19 @@ export class CustomLogger extends Logger {
 
   }
 
+  public devLog(message: string, colorTemplate?: ColorTemplate): void {
+
+    if (process.env.ENV !== EnvTypes.Development) {
+      return
+    }
+
+    this.customLog(message, colorTemplate)
+  }
+
   public customLog(message: string, colorTemplate?: ColorTemplate): void {
+
+
+
 
     // If no color is provided, just return a simple plain message, without coloring.
     if (colorTemplate === undefined) {
@@ -53,6 +66,10 @@ export class CustomLogger extends Logger {
     const { background, foreground } = this.colorTemplate[String(colorTemplate) || ColorTemplate.Blue]
 
     super.log(ConsoleHelper.coloredLog(background, foreground, `🤖: ${message}`, true));
+
+
+
+
 
 
   }

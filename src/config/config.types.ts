@@ -1,6 +1,7 @@
 
 
 export interface IEnvConfig {
+  'environment': string,
   'authentication.jwtSecret': string,
   'authentication.passport.defaultStrategy': string,
   'database.type': string,
