@@ -2,7 +2,7 @@ import { ConflictException, InternalServerErrorException } from '@nestjs/common'
 import * as bcrypt from 'bcrypt';
 import { EntityRepository, Repository } from 'typeorm';
 
-import { ErrorCodes } from '../types/errorCodes.types';
+import { ErrorCodes } from '../../types/errorCodes.types';
 import { AuthCredentialsDTO } from './auth.dto';
 import { User } from './user.entity';
 

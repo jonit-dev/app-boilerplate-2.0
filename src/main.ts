@@ -2,8 +2,8 @@ import { ClassSerializerInterceptor } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory, Reflector } from '@nestjs/core';
 
+import { ColorTemplate, CustomLogger } from '../loggers/CustomLogger';
 import { AppModule } from './app.module';
-import { ColorTemplate, CustomLogger } from './loggers/CustomLogger';
 
 
 async function bootstrap(): Promise<void> {
@@ -13,6 +13,7 @@ async function bootstrap(): Promise<void> {
 
   const logger = new CustomLogger('bootstrap')
 
+  // This global interceptor makes possible to use custom decorators such as @Exclude in some entities
   app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
   const configService = app.get(ConfigService)
