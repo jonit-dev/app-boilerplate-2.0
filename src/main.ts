@@ -1,6 +1,7 @@
 import { ClassSerializerInterceptor } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory, Reflector } from '@nestjs/core';
+import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 
 import { ColorTemplate, CustomLogger } from '../loggers/CustomLogger';
 import { AppModule } from './app.module';
@@ -9,7 +10,7 @@ import { AppModule } from './app.module';
 async function bootstrap(): Promise<void> {
 
 
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
 
   const logger = new CustomLogger('bootstrap')
 
@@ -23,7 +24,7 @@ async function bootstrap(): Promise<void> {
   const timezone = configService.get('TIMEZONE')
   const adminEmail = configService.get('ADMIN_EMAIL')
 
-  await app.listen(port);
+  await app.listen(port, '0.0.0.0');
 
   logger.customLog(`Server is running on ${env} | Port: ${port} | Language: ${language} | Timezone: ${timezone} | Admin: ${adminEmail}`, env === "Development" ? ColorTemplate.Yellow : ColorTemplate.Red)
 
