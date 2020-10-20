@@ -1,6 +1,6 @@
 import { Logger } from '@nestjs/common';
 
-import { ConsoleHelper } from '../libs/ConsoleHelper';
+import { ConsoleHelper } from '../libs/console.helper';
 import { ConsoleColor } from '../types/console.types';
 import { EnvTypes } from '../types/env.types';
 
@@ -20,8 +20,12 @@ interface IColorTemplate {
 export class CustomLogger extends Logger {
   public colorTemplate: IColorTemplate;
 
+  private consoleHelper: ConsoleHelper;
+
   constructor(context: string) {
     super(context);
+
+    this.consoleHelper = new ConsoleHelper();
 
     this.colorTemplate = {
       [ColorTemplate.Yellow]: {
@@ -59,13 +63,18 @@ export class CustomLogger extends Logger {
     ];
 
     super.log(
-      ConsoleHelper.coloredLog(background, foreground, `🤖: ${message}`, true),
+      this.consoleHelper.coloredLog(
+        background,
+        foreground,
+        `🤖: ${message}`,
+        true,
+      ),
     );
   }
 
   public log(message: string): void {
     super.log(
-      ConsoleHelper.coloredLog(
+      this.consoleHelper.coloredLog(
         ConsoleColor.BgBlue,
         ConsoleColor.FgBlack,
         `🤖: ${message}`,
@@ -76,7 +85,7 @@ export class CustomLogger extends Logger {
 
   public error(message: string, trace: string): void {
     super.error(
-      ConsoleHelper.coloredLog(
+      this.consoleHelper.coloredLog(
         ConsoleColor.BgRed,
         ConsoleColor.FgBlack,
         `🤖: ${message}`,
@@ -87,7 +96,7 @@ export class CustomLogger extends Logger {
 
   public warn(message: string): void {
     super.warn(
-      ConsoleHelper.coloredLog(
+      this.consoleHelper.coloredLog(
         ConsoleColor.BgYellow,
         ConsoleColor.FgBlack,
         `🤖: ${message}`,
@@ -98,7 +107,7 @@ export class CustomLogger extends Logger {
 
   public debug(message: string): void {
     super.debug(
-      ConsoleHelper.coloredLog(
+      this.consoleHelper.coloredLog(
         ConsoleColor.BgBlue,
         ConsoleColor.FgBlack,
         `🤖: ${message}`,
@@ -108,7 +117,7 @@ export class CustomLogger extends Logger {
   }
   public verbose(message: string): void {
     super.verbose(
-      ConsoleHelper.coloredLog(
+      this.consoleHelper.coloredLog(
         ConsoleColor.BgBlue,
         ConsoleColor.FgBlack,
         `🤖: ${message}`,

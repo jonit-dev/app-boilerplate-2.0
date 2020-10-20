@@ -1,12 +1,9 @@
 import { ClassSerializerInterceptor } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory, Reflector } from '@nestjs/core';
-import {
-  FastifyAdapter,
-  NestFastifyApplication,
-} from '@nestjs/platform-fastify';
+import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 
-import { ColorTemplate, CustomLogger } from '../loggers/CustomLogger';
+import { ColorTemplate, CustomLogger } from '../loggers/custom.logger';
 import { AppModule } from './app.module';
 
 async function bootstrap(): Promise<void> {

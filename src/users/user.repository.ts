@@ -1,11 +1,8 @@
-import {
-  ConflictException,
-  InternalServerErrorException,
-} from '@nestjs/common';
+import { ConflictException, InternalServerErrorException } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { EntityRepository, Repository } from 'typeorm';
 
-import { CustomLogger } from '../../loggers/CustomLogger';
+import { CustomLogger } from '../../loggers/custom.logger';
 import { ErrorCodes } from '../../types/errorCodes.types';
 import { AuthCredentialsDTO } from '../auth/auth.dto';
 import { User } from './user.entity';

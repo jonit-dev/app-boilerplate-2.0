@@ -1,23 +1,9 @@
-import {
-  Body,
-  Controller,
-  Param,
-  ParseIntPipe,
-  Query,
-  UseGuards,
-  UsePipes,
-  ValidationPipe,
-} from '@nestjs/common';
-import {
-  Delete,
-  Get,
-  Patch,
-  Post,
-} from '@nestjs/common/decorators/http/request-mapping.decorator';
+import { Body, Controller, Param, ParseIntPipe, Query, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Delete, Get, Patch, Post } from '@nestjs/common/decorators/http/request-mapping.decorator';
 import { AuthGuard } from '@nestjs/passport';
 import { RestrictUpdateKeys } from 'pipes/RestrictUpdateKeys.pipe';
 
-import { ColorTemplate, CustomLogger } from '../../loggers/CustomLogger';
+import { ColorTemplate, CustomLogger } from '../../loggers/custom.logger';
 import { GetUser } from '../auth/auth.decorators';
 import { User } from '../users/user.entity';
 import { TaskStatusValidationPipe } from './pipes/taskStatusValidation.pipe';

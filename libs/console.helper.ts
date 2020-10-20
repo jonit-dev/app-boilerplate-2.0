@@ -1,7 +1,10 @@
+import { Injectable } from '@nestjs/common';
+
 import { ConsoleColor } from '../types/console.types';
 
+@Injectable()
 export class ConsoleHelper {
-  public static coloredLog(
+  public coloredLog(
     backgroundColor: ConsoleColor,
     textColor: ConsoleColor,
     text: string,
