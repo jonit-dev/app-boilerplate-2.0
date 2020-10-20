@@ -25,11 +25,19 @@ async function bootstrap(): Promise<void> {
   const timezone = configService.get('TIMEZONE');
   const adminEmail = configService.get('ADMIN_EMAIL');
 
-  await app.listen(port, '0.0.0.0');
+  await app.listen(port, '0.0.0.0', (err: Error) => {
+    if (err) {
+      logger.error(
+        `Error while trying to bootstrap server on port ${port}`,
+        err.message,
+      );
+      return;
+    }
 
-  logger.customLog(
-    `Server is running on ${env} | Port: ${port} | Language: ${language} | Timezone: ${timezone} | Admin: ${adminEmail}`,
-    env === 'Development' ? ColorTemplate.Yellow : ColorTemplate.Red,
-  );
+    logger.customLog(
+      `Server is running on ${env} | Port: ${port} | Language: ${language} | Timezone: ${timezone} | Admin: ${adminEmail}`,
+      env === 'Development' ? ColorTemplate.Yellow : ColorTemplate.Red,
+    );
+  });
 }
 bootstrap();
