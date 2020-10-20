@@ -3,8 +3,8 @@ export const appConfig = (): any => ({
   authentication: {
     jwtSecret: process.env.JWT_SECRET,
     passport: {
-      defaultStrategy: process.env.PASSPORT_DEFAULT_STRATEGY
-    }
+      defaultStrategy: process.env.PASSPORT_DEFAULT_STRATEGY,
+    },
   },
   database: {
     type: process.env.DATABASE_TYPE,
@@ -14,6 +14,6 @@ export const appConfig = (): any => ({
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_NAME,
     entities: [__dirname + '/../**/*.entity.{js,ts}'],
-    synchronize: process.env.ENV === "Development" ? true : false // Dont set to true on production
-  }
-})
+    synchronize: process.env.ENV === 'Development' ? true : false, // Dont set to true on production
+  },
+});

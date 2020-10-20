@@ -1,9 +1,7 @@
-
-
 export interface IJwtPayload {
-  email: string
+  email: string;
 }
 
 export interface IAuthGranted {
-  accessToken: string
+  accessToken: string;
 }

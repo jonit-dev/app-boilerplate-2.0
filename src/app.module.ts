@@ -12,19 +12,17 @@ import { UsersModule } from './users/users.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [appConfig]
+      load: [appConfig],
     }),
     TasksModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useClass: DatabaseConfig
+      useClass: DatabaseConfig,
     }),
 
     AuthModule,
 
-    UsersModule],
+    UsersModule,
+  ],
 })
-
-
-
-export class AppModule { }
+export class AppModule {}

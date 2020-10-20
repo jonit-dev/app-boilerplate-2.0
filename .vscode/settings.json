@@ -1,5 +1,12 @@
 {
   "workbench.colorTheme": "Red One Dark Pro | Mirage",
   "editor.minimap.size": "fit",
-  "typescript.preferences.importModuleSpecifier": "relative"
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "editor.formatOnSave": true,
+  "[Dockerfile]": {
+    "editor.defaultFormatter": "shell-format"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

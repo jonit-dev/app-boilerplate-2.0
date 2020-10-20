@@ -1,5 +1,11 @@
 import { Exclude } from 'class-transformer';
-import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 import { User } from '../users/user.entity';
 import { TaskStatus } from './task.types';
@@ -13,13 +19,17 @@ export class Task extends BaseEntity {
   title: string;
 
   @Column()
-  description: string
+  description: string;
 
   @Column()
-  status: TaskStatus
+  status: TaskStatus;
 
   @Exclude() // this will exclude the user information from Task response!
-  @ManyToOne(type => User, user => user.tasks, { eager: false })
+  @ManyToOne(
+    type => User,
+    user => user.tasks,
+    { eager: false },
+  )
   user: User;
 
   @Column()

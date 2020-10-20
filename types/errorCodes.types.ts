@@ -1,5 +1,3 @@
-
-
 export enum ErrorCodes {
-  DuplicateEntry = "23505"
+  DuplicateEntry = '23505',
 }

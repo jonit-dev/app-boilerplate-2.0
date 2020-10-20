@@ -1,4 +1,10 @@
-import { IsIn, IsNotEmpty, IsOptional, IsString, MaxLength } from 'class-validator';
+import {
+  IsIn,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  MaxLength,
+} from 'class-validator';
 
 import { TaskStatus } from './task.types';
 
@@ -9,7 +15,6 @@ export class TaskCreateDTO {
   @IsNotEmpty()
   description: string;
 }
-
 
 export class TaskGetFilterDTO {
   @IsOptional()
@@ -36,5 +41,5 @@ export class TaskUpdateDTO {
 
   @IsOptional()
   @IsIn([TaskStatus.Open, TaskStatus.Done, TaskStatus.InProgress])
-  status: TaskStatus
+  status: TaskStatus;
 }

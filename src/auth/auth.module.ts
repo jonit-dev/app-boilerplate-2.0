@@ -10,15 +10,16 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt.strategy';
 
-
 @Module({
   imports: [
     PassportModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService<IEnvConfig>) => ({
-        defaultStrategy: configService.get('authentication.passport.defaultStrategy')
+        defaultStrategy: configService.get(
+          'authentication.passport.defaultStrategy',
+        ),
       }),
-      inject: [ConfigService]
+      inject: [ConfigService],
     }),
 
     JwtModule.registerAsync({
@@ -27,18 +28,15 @@ import { JwtStrategy } from './jwt.strategy';
         secret: configService.get('authentication.jwtSecret'),
         signOptions: {
           expiresIn: 3600,
-        }
+        },
       }),
-      inject: [ConfigService]
+      inject: [ConfigService],
     }),
     ConfigService,
-    TypeOrmModule.forFeature([UserRepository])
+    TypeOrmModule.forFeature([UserRepository]),
   ],
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy],
-  exports: [
-    JwtStrategy,
-    PassportModule
-  ]
+  exports: [JwtStrategy, PassportModule],
 })
-export class AuthModule { }
+export class AuthModule {}
