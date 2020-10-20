@@ -9,7 +9,7 @@ export class TaskStatusValidationPipe implements PipeTransform {
     TaskStatus.Done,
   ];
 
-  transform(value) {
+  transform(value): any {
     // Check if the task status is under our enum
     if (value.status && !this.isStatusValid(value.status)) {
       throw new BadRequestException(`${value.status} is an invalid status!`);
@@ -18,7 +18,7 @@ export class TaskStatusValidationPipe implements PipeTransform {
     return value;
   }
 
-  private isStatusValid(status) {
+  private isStatusValid(status): boolean {
     return this.allowedStatuses.includes(status);
   }
 }
