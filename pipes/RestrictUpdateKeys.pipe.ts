@@ -4,7 +4,7 @@ import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
 
 export class RestrictUpdateKeys implements PipeTransform {
-  async transform(value: any, { metatype }: ArgumentMetadata): Promise<any> {
+  async transform(value, { metatype }: ArgumentMetadata): Promise<any> {
     // You have to convert to class first, otherwise validate won't work!
     const object = plainToClass(metatype, value);
 
@@ -13,7 +13,7 @@ export class RestrictUpdateKeys implements PipeTransform {
       forbidNonWhitelisted: true,
     });
 
-    const forbiddenProperties = hasError.map((item) => {
+    const forbiddenProperties = hasError.map(item => {
       return `${item.property} (${Object.values(item.constraints).join(', ')})`;
     });
 
