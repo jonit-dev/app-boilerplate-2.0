@@ -2,7 +2,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 
-import { TranslationHelper } from '../../libs/language.helper';
+import { TranslationHelper } from '../../libs/translation.helper';
 import { AuthTranslationKeys, Entities } from '../../types/translation.types';
 import { UserRepository } from '../users/user.repository';
 import { AuthCredentialsDTO } from './auth.dto';

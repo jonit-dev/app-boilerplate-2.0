@@ -3,7 +3,7 @@ import { ArgumentMetadata } from '@nestjs/common/interfaces/features/pipe-transf
 import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
 
-import { TranslationHelper } from '../libs/language.helper';
+import { TranslationHelper } from '../libs/translation.helper';
 import { Entities, GlobalTranslationKeys } from '../types/translation.types';
 
 export class RestrictUpdateKeys implements PipeTransform {

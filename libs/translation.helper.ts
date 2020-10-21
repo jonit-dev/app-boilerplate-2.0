@@ -11,7 +11,7 @@ interface IInterpolationObjs {
 @Injectable()
 export class TranslationHelper {
   get(
-    resource: Entities,
+    entity: Entities,
     key: string,
     interpolationObjs?: IInterpolationObjs,
   ): any {
@@ -19,7 +19,7 @@ export class TranslationHelper {
 
     const envLang = process.env.LANGUAGE;
 
-    const translationFilePath = `${translationsPath}/${resource}.lang.json`;
+    const translationFilePath = `${translationsPath}/${entity}.lang.json`;
 
     const jsonFile = fs.readFileSync(translationFilePath);
 

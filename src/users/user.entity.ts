@@ -1,6 +1,13 @@
 import * as bcrypt from 'bcrypt';
 import { Exclude } from 'class-transformer';
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  Unique,
+} from 'typeorm';
 
 import { Task } from '../tasks/task.entity';
 import { UserTypes } from './user.types';

@@ -1,7 +1,7 @@
 import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
 import { Observable } from 'rxjs';
 
-import { TranslationHelper } from '../libs/language.helper';
+import { TranslationHelper } from '../libs/translation.helper';
 import { UserTypes } from '../src/users/user.types';
 import { Entities, UserTranslationKeys } from '../types/translation.types';
 

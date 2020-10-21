@@ -4,6 +4,7 @@ export enum Entities {
   Auth = 'auth',
   Tasks = 'tasks',
   Users = 'users',
+  Logs = 'logs',
 }
 
 export enum GlobalTranslationKeys {
@@ -18,4 +19,8 @@ export enum AuthTranslationKeys {
 
 export enum UserTranslationKeys {
   ADMIN_ONLY = 'ADMIN_ONLY',
+}
+
+export enum LogTranslationKeys {
+  LOG_DELETE_NOT_FOUND = 'LOG_DELETE_NOT_FOUND',
 }

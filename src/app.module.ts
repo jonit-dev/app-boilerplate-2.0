@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { GlobalModule } from './global.module';
 import { TasksModule } from './tasks/tasks.module';
 import { UsersModule } from './users/users.module';
+import { LogsModule } from './logs/logs.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { UsersModule } from './users/users.module';
 
     AuthModule,
     UsersModule,
+    LogsModule,
   ],
 })
 export class AppModule {}
