@@ -3,7 +3,9 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory, Reflector } from '@nestjs/core';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 
+import { TranslationHelper } from '../libs/language.helper';
 import { ColorTemplate, CustomLogger } from '../loggers/custom.logger';
+import { Entities, GlobalTranslationKeys } from '../types/translation.types';
 import { AppModule } from './app.module';
 
 async function bootstrap(): Promise<void> {
@@ -25,17 +27,29 @@ async function bootstrap(): Promise<void> {
   const timezone = configService.get('TIMEZONE');
   const adminEmail = configService.get('ADMIN_EMAIL');
 
+  const translationHelper = new TranslationHelper();
+
   await app.listen(port, '0.0.0.0', (err: Error) => {
     if (err) {
       logger.error(
-        `Error while trying to bootstrap server on port ${port}`,
+        translationHelper.get(
+          Entities.Global,
+          GlobalTranslationKeys.SERVER_BOOTSTRAP_ERROR,
+          {
+            port,
+          },
+        ),
         err.message,
       );
       return;
     }
 
     logger.customLog(
-      `Server is running on ${env} | Port: ${port} | Language: ${language} | Timezone: ${timezone} | Admin: ${adminEmail}`,
+      translationHelper.get(
+        Entities.Global,
+        GlobalTranslationKeys.SERVER_RUNNING,
+        { env, port, language, timezone, adminEmail },
+      ),
       env === 'Development' ? ColorTemplate.Yellow : ColorTemplate.Red,
     );
   });

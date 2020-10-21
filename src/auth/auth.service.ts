@@ -3,10 +3,10 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { TranslationHelper } from '../../libs/language.helper';
-import { Entities } from '../../types/entities.types';
+import { AuthTranslationKeys, Entities } from '../../types/translation.types';
 import { UserRepository } from '../users/user.repository';
 import { AuthCredentialsDTO } from './auth.dto';
-import { AuthTranslationKeys, IAuthGranted, IJwtPayload } from './auth.types';
+import { IAuthGranted, IJwtPayload } from './auth.types';
 
 @Injectable()
 export class AuthService {

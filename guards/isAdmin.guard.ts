@@ -2,8 +2,8 @@ import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from
 import { Observable } from 'rxjs';
 
 import { TranslationHelper } from '../libs/language.helper';
-import { UserTranslationKeys, UserTypes } from '../src/users/user.types';
-import { Entities } from '../types/entities.types';
+import { UserTypes } from '../src/users/user.types';
+import { Entities, UserTranslationKeys } from '../types/translation.types';
 
 @Injectable()
 export class AdminGuard implements CanActivate {

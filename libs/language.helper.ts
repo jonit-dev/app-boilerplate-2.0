@@ -2,9 +2,9 @@ import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { Entities } from '../types/entities.types';
+import { Entities } from '../types/translation.types';
 
-interface IInterpolationObj {
+interface IInterpolationObjs {
   [key: string]: string;
 }
 
@@ -13,7 +13,7 @@ export class TranslationHelper {
   get(
     resource: Entities,
     key: string,
-    interpolationObj?: IInterpolationObj,
+    interpolationObjs?: IInterpolationObjs,
   ): any {
     const translationsPath = path.resolve(__dirname, '../../translations');
 
@@ -27,11 +27,11 @@ export class TranslationHelper {
 
     let translatedString: string = languageObj[key][envLang];
 
-    if (interpolationObj) {
-      for (const key of Object.keys(interpolationObj)) {
+    if (interpolationObjs) {
+      for (const key of Object.keys(interpolationObjs)) {
         translatedString = translatedString.replace(
           `{{${key}}}`,
-          interpolationObj[key],
+          interpolationObjs[key],
         );
       }
     }

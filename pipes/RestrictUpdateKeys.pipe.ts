@@ -3,7 +3,16 @@ import { ArgumentMetadata } from '@nestjs/common/interfaces/features/pipe-transf
 import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
 
+import { TranslationHelper } from '../libs/language.helper';
+import { Entities, GlobalTranslationKeys } from '../types/translation.types';
+
 export class RestrictUpdateKeys implements PipeTransform {
+  private translationHelper: TranslationHelper;
+
+  constructor() {
+    this.translationHelper = new TranslationHelper();
+  }
+
   async transform(value, { metatype }: ArgumentMetadata): Promise<any> {
     // You have to convert to class first, otherwise validate won't work!
     const object = plainToClass(metatype, value);
@@ -19,7 +28,11 @@ export class RestrictUpdateKeys implements PipeTransform {
 
     if (hasError.length) {
       throw new ForbiddenException(
-        `Error while trying to update the following forbidden keys: ${forbiddenProperties}`,
+        this.translationHelper.get(
+          Entities.Global,
+          GlobalTranslationKeys.FORBIDDEN_KEY_UPDATE,
+          { forbiddenProperties: forbiddenProperties.join('') },
+        ),
       );
     }
 
