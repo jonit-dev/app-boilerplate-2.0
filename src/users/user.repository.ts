@@ -6,6 +6,7 @@ import { CustomLogger } from '../../loggers/custom.logger';
 import { ErrorCodes } from '../../types/errorCodes.types';
 import { AuthCredentialsDTO } from '../auth/auth.dto';
 import { User } from './user.entity';
+import { UserTypes } from './user.types';
 
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
@@ -20,6 +21,7 @@ export class UserRepository extends Repository<User> {
       const user = new User();
       user.email = email;
       user.salt = salt;
+      user.type = UserTypes.Regular;
       user.password = await this.hashPassword(password, salt);
 
       await user.save();

@@ -3,12 +3,16 @@ import { Exclude } from 'class-transformer';
 import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
 import { Task } from '../tasks/task.entity';
+import { UserTypes } from './user.types';
 
 @Unique(['email'])
 @Entity()
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column()
+  type: UserTypes;
 
   @Column()
   email: string;
