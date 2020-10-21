@@ -2,14 +2,16 @@ import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
 
+import { Entities } from '../types/entities.types';
+
 interface IInterpolationObj {
   [key: string]: string;
 }
 
 @Injectable()
-export class TSHelper {
+export class TranslationHelper {
   get(
-    resource: string,
+    resource: Entities,
     key: string,
     interpolationObj?: IInterpolationObj,
   ): any {

@@ -1,12 +1,13 @@
 import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
 import { Observable } from 'rxjs';
 
-import { TSHelper } from '../libs/language.helper';
-import { UserTypes } from '../src/users/user.types';
+import { TranslationHelper } from '../libs/language.helper';
+import { UserTranslationKeys, UserTypes } from '../src/users/user.types';
+import { Entities } from '../types/entities.types';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
-  constructor(private tsHelper: TSHelper) {}
+  constructor(private translationHelper: TranslationHelper) {}
 
   canActivate(
     context: ExecutionContext,
@@ -20,11 +21,10 @@ export class AdminGuard implements CanActivate {
 
     if (user.type !== UserTypes.Admin) {
       throw new UnauthorizedException(
-        this.tsHelper.get('users', 'TEST', {
-          var: 'SUCESSO!',
-          foo: 'hello',
-          bar: 'world',
-        }),
+        this.translationHelper.get(
+          Entities.Users,
+          UserTranslationKeys.ADMIN_ONLY,
+        ),
       );
     }
 

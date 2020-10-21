@@ -2,9 +2,11 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 
+import { TranslationHelper } from '../../libs/language.helper';
+import { Entities } from '../../types/entities.types';
 import { UserRepository } from '../users/user.repository';
 import { AuthCredentialsDTO } from './auth.dto';
-import { IAuthGranted, IJwtPayload } from './auth.types';
+import { AuthTranslationKeys, IAuthGranted, IJwtPayload } from './auth.types';
 
 @Injectable()
 export class AuthService {
@@ -12,6 +14,7 @@ export class AuthService {
     @InjectRepository(UserRepository)
     private userRepository: UserRepository,
     private jwtService: JwtService,
+    private translationHelper: TranslationHelper,
   ) {}
 
   async signUp(authCredentialsDTO: AuthCredentialsDTO): Promise<void> {
@@ -24,7 +27,12 @@ export class AuthService {
     );
 
     if (!email) {
-      throw new UnauthorizedException('Invalid credentials');
+      throw new UnauthorizedException(
+        this.translationHelper.get(
+          Entities.Auth,
+          AuthTranslationKeys.INVALID_CREDENTIALS,
+        ),
+      );
     }
 
     const payload: IJwtPayload = { email };
