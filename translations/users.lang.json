@@ -1,0 +1,10 @@
+{
+  "ADMIN_ONLY": {
+    "eng": "Only admins can access this route!",
+    "ptBr": "Apenas administradores podem acessar esta rota."
+  },
+  "TEST": {
+    "eng": "This is a variable interpolation test: {{var}} - {{foo}} - {{bar}}",
+    "ptBr": "Esse eh um teste de interpolacao: {{var}} - {{foo}} - {{bar}}"
+  }
+}

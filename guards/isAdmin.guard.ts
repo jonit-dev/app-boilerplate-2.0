@@ -1,12 +1,12 @@
 import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
 import { Observable } from 'rxjs';
 
-import { JwtStrategy } from '../src/auth/jwt.strategy';
+import { TSHelper } from '../libs/language.helper';
 import { UserTypes } from '../src/users/user.types';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
-  constructor(private jwtStrategy: JwtStrategy) {}
+  constructor(private tsHelper: TSHelper) {}
 
   canActivate(
     context: ExecutionContext,
@@ -19,7 +19,13 @@ export class AdminGuard implements CanActivate {
     const { user } = request;
 
     if (user.type !== UserTypes.Admin) {
-      throw new UnauthorizedException('Only admins can access this route!');
+      throw new UnauthorizedException(
+        this.tsHelper.get('users', 'TEST', {
+          var: 'SUCESSO!',
+          foo: 'hello',
+          bar: 'world',
+        }),
+      );
     }
 
     return true;
