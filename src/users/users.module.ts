@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { TransactionalEmail } from '../../emails/TransactionalEmail';
 import { AuthModule } from '../auth/auth.module';
 import { JwtStrategy } from '../auth/jwt.strategy';
 import { LogsModule } from '../logs/logs.module';
@@ -17,6 +18,6 @@ import { UsersController } from './users.controller';
     LogsModule,
   ],
   controllers: [UsersController],
-  providers: [JwtStrategy, LogsService],
+  providers: [JwtStrategy, LogsService, TransactionalEmail],
 })
 export class UsersModule {}

@@ -1,0 +1,8 @@
+[Product Name]
+{{jobsNotificationFirstPhrase}}
+
+{{jobsNotificationSecondParagraph}}
+
+{{postSummary}}
+
+{{jobsNotificationClosing}} [Unsubscribe Link]
