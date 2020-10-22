@@ -2,6 +2,8 @@ import sgMail from '@sendgrid/mail';
 
 import { EmailProviders, IEmailProvider } from './email.types';
 
+//!Note: Email provider's api keys are setup on TransactionalEmail.ts
+
 export const emailProviders: IEmailProvider[] = [
   {
     // TODO: SENDGRID Free tier is 100 only
