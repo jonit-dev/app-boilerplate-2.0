@@ -30,7 +30,7 @@ export class AuthService {
       throw new UnauthorizedException(
         this.translationHelper.get(
           Entities.Auth,
-          AuthTranslationKeys.INVALID_CREDENTIALS,
+          AuthTranslationKeys.InvalidCredentials,
         ),
       );
     }

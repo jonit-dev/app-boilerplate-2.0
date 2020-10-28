@@ -29,7 +29,7 @@ export class LogsService {
       throw new NotFoundException(
         this.translationHelper.get(
           Entities.Logs,
-          LogTranslationKeys.LOG_DELETE_NOT_FOUND,
+          LogTranslationKeys.LogDeleteNotFound,
         ),
       );
     }

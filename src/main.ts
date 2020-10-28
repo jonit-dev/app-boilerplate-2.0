@@ -34,7 +34,7 @@ async function bootstrap(): Promise<void> {
       logger.error(
         translationHelper.get(
           Entities.Global,
-          GlobalTranslationKeys.SERVER_BOOTSTRAP_ERROR,
+          GlobalTranslationKeys.ServerBootstrapError,
           {
             port,
           },
@@ -47,7 +47,7 @@ async function bootstrap(): Promise<void> {
     logger.customLog(
       translationHelper.get(
         Entities.Global,
-        GlobalTranslationKeys.SERVER_RUNNING,
+        GlobalTranslationKeys.ServerRunning,
         { env, port, language, timezone, adminEmail },
       ),
       env === 'Development' ? ColorTemplate.Yellow : ColorTemplate.Red,

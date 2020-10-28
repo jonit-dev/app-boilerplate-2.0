@@ -1,5 +1,5 @@
 {
-  "LOG_DELETE_NOT_FOUND": {
+  "LogDeleteNotFound": {
     "eng": "Only admins can access this route!",
     "ptBr": "Apenas administradores podem acessar esta rota."
   }

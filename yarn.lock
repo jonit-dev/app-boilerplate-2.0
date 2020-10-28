@@ -521,10 +521,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@little-sentinel/shared@^1.0.47":
-  version "1.0.47"
-  resolved "https://registry.yarnpkg.com/@little-sentinel/shared/-/shared-1.0.47.tgz#eab148f630210d452479e8987cdf9abb437c1f8e"
-  integrity sha512-77wo3yh+py16h1OfN2wRfkkkIq/w2sAZoiy9wC86f09eXLo1Ag0mSskiSHwajEdCvoH0fpHx9WFZtaLeZ2TUHQ==
+"@little-sentinel/shared@^1.0.48":
+  version "1.0.48"
+  resolved "https://registry.yarnpkg.com/@little-sentinel/shared/-/shared-1.0.48.tgz#3a6a996bcd8faaab51ebd5d7d19f70bc7628a30e"
+  integrity sha512-nmZoP8tbL6EcamGVrud4eNZlG0U7/0JaxpTCOhQSt1AvzFyOjG9fApLj8gV0mjo9XSnETD+BcGSX2djHUzZPjQ==
 
 "@nestjs/cli@^7.0.0":
   version "7.4.1"

@@ -39,7 +39,7 @@
     "rxjs": "^6.5.4"
   },
   "devDependencies": {
-    "@little-sentinel/shared": "^1.0.47",
+    "@little-sentinel/shared": "^1.0.48",
     "@nestjs/cli": "^7.0.0",
     "@nestjs/config": "^0.5.0",
     "@nestjs/platform-express": "^7.4.4",

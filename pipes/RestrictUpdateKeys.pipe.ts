@@ -30,7 +30,7 @@ export class RestrictUpdateKeys implements PipeTransform {
       throw new ForbiddenException(
         this.translationHelper.get(
           Entities.Global,
-          GlobalTranslationKeys.FORBIDDEN_KEY_UPDATE,
+          GlobalTranslationKeys.ForbiddenKeyUpdate,
           { forbiddenProperties: forbiddenProperties.join('') },
         ),
       );

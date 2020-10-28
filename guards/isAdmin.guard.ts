@@ -23,7 +23,7 @@ export class AdminGuard implements CanActivate {
       throw new UnauthorizedException(
         this.translationHelper.get(
           Entities.Users,
-          UserTranslationKeys.ADMIN_ONLY,
+          UserTranslationKeys.AdminOnly,
         ),
       );
     }
