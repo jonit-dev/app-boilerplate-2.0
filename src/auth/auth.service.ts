@@ -1,9 +1,9 @@
+import { AuthTranslationKeys, Entities } from '@little-sentinel/shared';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { TranslationHelper } from '../../libs/translation.helper';
-import { AuthTranslationKeys, Entities } from '../../types/translation.types';
 import { UserRepository } from '../users/user.repository';
 import { AuthCredentialsDTO } from './auth.dto';
 import { IAuthGranted, IJwtPayload } from './auth.types';

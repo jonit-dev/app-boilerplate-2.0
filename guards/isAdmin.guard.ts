@@ -1,9 +1,9 @@
+import { Entities, UserTranslationKeys } from '@little-sentinel/shared';
 import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
 import { Observable } from 'rxjs';
 
 import { TranslationHelper } from '../libs/translation.helper';
 import { UserTypes } from '../src/users/user.types';
-import { Entities, UserTranslationKeys } from '../types/translation.types';
 
 @Injectable()
 export class AdminGuard implements CanActivate {

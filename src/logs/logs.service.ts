@@ -1,8 +1,8 @@
+import { Entities, LogTranslationKeys } from '@little-sentinel/shared';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { TranslationHelper } from '../../libs/translation.helper';
-import { Entities, LogTranslationKeys } from '../../types/translation.types';
 import { Log } from './log.entity';
 import { LogRepository } from './logs.repository';
 

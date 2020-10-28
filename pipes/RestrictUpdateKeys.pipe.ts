@@ -1,10 +1,10 @@
+import { Entities, GlobalTranslationKeys } from '@little-sentinel/shared';
 import { ForbiddenException, PipeTransform } from '@nestjs/common';
 import { ArgumentMetadata } from '@nestjs/common/interfaces/features/pipe-transform.interface';
 import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
 
 import { TranslationHelper } from '../libs/translation.helper';
-import { Entities, GlobalTranslationKeys } from '../types/translation.types';
 
 export class RestrictUpdateKeys implements PipeTransform {
   private translationHelper: TranslationHelper;

@@ -1,3 +1,4 @@
+import { Entities, GlobalTranslationKeys } from '@little-sentinel/shared';
 import { ClassSerializerInterceptor } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { NestFactory, Reflector } from '@nestjs/core';
@@ -5,7 +6,6 @@ import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify
 
 import { TranslationHelper } from '../libs/translation.helper';
 import { ColorTemplate, CustomLogger } from '../loggers/custom.logger';
-import { Entities, GlobalTranslationKeys } from '../types/translation.types';
 import { AppModule } from './app.module';
 
 async function bootstrap(): Promise<void> {

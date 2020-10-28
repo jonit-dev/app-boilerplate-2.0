@@ -1,8 +1,7 @@
+import { Entities } from '@little-sentinel/shared';
 import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
-
-import { Entities } from '../types/translation.types';
 
 interface IInterpolationObjs {
   [key: string]: string;
@@ -15,7 +14,10 @@ export class TranslationHelper {
     key: string,
     interpolationObjs?: IInterpolationObjs,
   ): any {
-    const translationsPath = path.resolve(__dirname, '../../translations');
+    const translationsPath = path.resolve(
+      __dirname,
+      '../../node_modules/@little-sentinel/shared/src/translations',
+    );
 
     const envLang = process.env.LANGUAGE;
 
